@@ -1,0 +1,27 @@
+
+
+# Get the IP of the client :
+https://stackoverflow.com/questions/30558929/django-get-user-ip-from-development-server
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        print "returning FORWARDED_FOR"
+        ip = x_forwarded_for.split(',')[-1].strip()
+    elif request.META.get('HTTP_X_REAL_IP'):
+        print "returning REAL_IP"
+        ip = request.META.get('HTTP_X_REAL_IP')
+    else:
+        print "returning REMOTE_ADDR"
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
+Or
+https://stackoverflow.com/questions/4581789/how-do-i-get-user-ip-address-in-django?noredirect=1&lq=1
+https://github.com/un33k/django-ipware/tree/master/ipware
+https://djangosnippets.org/snippets/2575/
+
+
+
+Location on a Map :
+https://pygeoip.readthedocs.io/en/v0.3.2/index.html
+https://blog.bixly.com/location-awareness-in-django
